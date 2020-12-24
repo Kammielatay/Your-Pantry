@@ -2,7 +2,9 @@ let ingredientsArray = ['Apples', 'Avocado', 'Bacon', 'Baking Powder', 'Barbecue
 
 $('#click-here').on('click', function (){
 
-    $("html, body").animate({ scrollTop: $("#checkbox").height()}, 'slow');
+    $('html, body').animate({
+        scrollTop: $("#checkbox").offset().top
+    });
 
     for (let i = 0; i < ingredientsArray.length; i++){
         let pContainer = $("<p class=label>");
