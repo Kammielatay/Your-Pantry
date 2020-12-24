@@ -48,5 +48,11 @@ span {
     
 }
 
-
+.generate-recipe {
+    background-color: #26a69a;
+    left:0px;
+    width: 124.453px;
+    display: flex;
+    margin: auto;
+}
 
