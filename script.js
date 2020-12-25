@@ -1,20 +1,40 @@
 
-var userProfile = document.querySelector("#name");
-var item1 = document.getElementById("ingredients1");
-var item2 = document.getElementById("ingredients2");
-var item3 = document.getElementById("ingredients3");
-var item4 = document.getElementById("ingredients4");
-var searchbtn = document.getElementById("search");
-var genterateRecipe = document.getElementById("Generate Recipe");   
-var priceTracker = document.getElementById("Price Tracker");   
-var calorieCount = document.getElementById("Calorie Count");  
+//let userProfile = document.querySelector("#name");
+let item1 = document.getElementById("ingredients1");
+let item2 = document.getElementById("ingredients2");
+let item3 = document.getElementById("ingredients3");
+let item4 = document.getElementById("ingredients4");
+//let searchbtn = document.getElementById("search");
+//let genterateRecipe = document.getElementById("Generate Recipe");   
+//let priceTracker = document.getElementById("Price Tracker");   
+let calorieCount = document.getElementById("Calories"); 
+let savedRecipes = document.getElementById("My Saved Recipes") 
 
+//Kameshia code below
+let foodArray = ["chicken", 'apples', 'bananas', 'lemons', 'spinach']
 
+$('#click-here').on('click', function (){
+    for (let i = 0; i < foodArray.length; i++){
+        let pContainer = $("<p class=label>");
+        let labelContainer = $("<label class=option>");
+        let inputContainer = $("<input type=checkbox >");
+        let spanContainer = $('<span>');
+        
+        inputContainer.addClass('filled-in');
+        spanContainer.text(foodArray[i]);
+        inputContainer.attr('value', foodArray[i]);
 
-
+        $('#checkbox').append(pContainer);
+        pContainer.append(labelContainer);
+        labelContainer.append(inputContainer);
+        labelContainer.append(spanContainer);
+    
+    }
+})
+//Kameshia code
       
 
-for (var i = 0; searchArray.length; i++) {
+for (let i = 0; searchArray.length; i++) {
         let search = parsInt(searchArray[i]) + 9;
         if (search > searchbtn) {
           searchbtn = searchArray;
@@ -29,7 +49,7 @@ for (var i = 0; searchArray.length; i++) {
       //event.stopPropagation()
       
       
-      var key = $(this).attr("data-saving")
+      var key = $(this).attr("My Saved Recipes")
       localStorage.setItem(key,usertext)
     })
 
