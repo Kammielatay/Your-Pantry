@@ -77,6 +77,8 @@ function generateBtn() {
                    recipeDiv.addClass('col s12 m4');
 
                    let recipeCard = $('<div class=card>');
+
+                   
                    let recipeImage = $('<div class=card-image>')
                    let foodImage = $('<img>');
                    foodImage.attr('src', response[i].image);
