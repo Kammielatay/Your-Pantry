@@ -47,7 +47,36 @@ function generateBtn() {
 
     let ingredientsbtn = $('<button>Get Recipe!</button>');
     ingredientsbtn.addClass('generate-recipe waves-effect waves-light btn center-align')
-    $('.container').append(ingredientsbtn)
+    $('.container').append(ingredientsbtn);
+
+    ingredientsbtn.on('click', function(){
+        for (let i = 0; i < selectedIngredients.length; i++){
+            let apiKey = "0fb886bc44754ed8a35e10c5ab1da96f"
+            let ingredients = selectedIngredients[i]
+            let resultsQuantity = 5;
+            let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?" +
+                "apiKey=" +
+                apiKey +
+                "&ingredients=" +
+                ingredients +
+                "&number=" +
+                resultsQuantity;
+
+
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response[i].title)
+                
+
+
+            });
+
+
+        }
+    })
 }
 
 // when the user clicks the start button, these functions will run
@@ -62,3 +91,4 @@ $('#start-here').on('click', function (){
 
 
 console.log(selectedIngredients)
+
