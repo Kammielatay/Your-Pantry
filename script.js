@@ -43,7 +43,6 @@ function selectedItems() {
 }
 
 
-
 // creates a button that will will later be clicked to grab recipes
 function generateBtn() {
 
@@ -68,7 +67,8 @@ function generateBtn() {
                 method: "GET"
             }).then(function (response) {
                 console.log(response)
-
+                
+                // creates recipe cards for each response item
                 let recipeContainer = $('<div class=row>');
                 $('.container').append(recipeContainer);
                 
@@ -78,7 +78,7 @@ function generateBtn() {
 
                    let recipeCard = $('<div class=card>');
 
-                   
+
                    let recipeImage = $('<div class=card-image>')
                    let foodImage = $('<img>');
                    foodImage.attr('src', response[i].image);
