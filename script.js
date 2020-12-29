@@ -63,7 +63,6 @@ function generateBtn() {
             "&number=" +
             resultsQuantity;
         
-
             $.ajax({
                 url: queryURL,
                 method: "GET"
