@@ -53,6 +53,13 @@ $.ajax({
 
 
     console.log(response2)
+    console.log(response2.title)
+    console.log(response2.image)
+    console.log(response2.readyInMinutes)
+    console.log(response2.servings)
+    console.log(response2.sourceUrl)
+    console.log(response2.spoonacularSourceUrl)
+    console.log(response2.summary)
 
 
 });
