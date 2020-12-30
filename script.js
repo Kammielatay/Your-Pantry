@@ -42,6 +42,7 @@ function selectedItems() {
     })
 }
 
+
 // creates a button that will will later be clicked to grab recipes
 function generateBtn() {
 
@@ -50,32 +51,49 @@ function generateBtn() {
     $('.container').append(ingredientsbtn);
 
     ingredientsbtn.on('click', function(){
-        for (let i = 0; i < selectedIngredients.length; i++){
             let apiKey = "0fb886bc44754ed8a35e10c5ab1da96f"
-            let ingredients = selectedIngredients[i]
-            let resultsQuantity = 5;
+            let ingredients = selectedIngredients 
+            let resultsQuantity = 21;
             let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?" +
-                "apiKey=" +
-                apiKey +
-                "&ingredients=" +
-                ingredients +
-                "&number=" +
-                resultsQuantity;
-
-
-
+            "apiKey=" +
+            apiKey +
+            "&ingredients=" +
+            ingredients +
+            "&number=" +
+            resultsQuantity;
+        
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                console.log(response[i].title)
+                console.log(response)
                 
+                // creates recipe cards for each response item
+                let recipeContainer = $('<div class=row>');
+                $('.container').append(recipeContainer);
+                
+                for (let i = 0; i < resultsQuantity; i++){
+                   let recipeDiv = $('<div>');
+                   recipeDiv.addClass('col s12 m4');
 
+                   let recipeCard = $('<div class=card>');
+
+
+                   let recipeImage = $('<div class=card-image>')
+                   let foodImage = $('<img>');
+                   foodImage.attr('src', response[i].image);
+                   let foodTitle = $('<span class=card-title>');
+                   foodTitle.text(response[i].title)
+
+
+                   recipeContainer.append(recipeDiv);
+                   recipeDiv.append(recipeCard);
+                   recipeCard.append(recipeImage);
+                   recipeImage.append(foodImage, foodTitle);
+                   
+                }
 
             });
-
-
-        }
     })
 }
 
@@ -90,5 +108,4 @@ $('#start-here').on('click', function (){
 })
 
 
-console.log(selectedIngredients)
 
