@@ -33,6 +33,26 @@ $('#click-here').on('click', function (){
 })
 //Kameshia code
       
+var unirest = require("unirest");
+
+var req = unirest("GET", "https://edamam-edamam-nutrition-analysis.p.rapidapi.com/api/nutrition-data");
+
+req.query({
+	"ingr": "1 large apple"
+});
+
+req.headers({
+	"x-rapidapi-key": "c4c601bf11msh4c2c77a31e97b65p1c1a7bjsn748807a8804b",
+	"x-rapidapi-host": "edamam-edamam-nutrition-analysis.p.rapidapi.com",
+	"useQueryString": true
+});
+
+
+req.end(function (res) {
+	if (res.error) throw new Error(res.error);
+
+	console.log(res.body);
+});
 
 for (let i = 0; searchArray.length; i++) {
         let search = parsInt(searchArray[i]) + 9;
