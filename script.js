@@ -20,7 +20,7 @@ $('#click-here').on('click', function (){
         let inputContainer = $("<input type=checkbox >");
         let spanContainer = $('<span>');
         
-        inputContainer.addClass('filled-in');
+        inputContainer.addClass('filled-in');Ok
         spanContainer.text(foodArray[i]);
         inputContainer.attr('value', foodArray[i]);
 
