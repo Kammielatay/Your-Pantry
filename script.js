@@ -50,9 +50,9 @@ function generateBtn() {
     $('.container').append(ingredientsbtn);
 
     ingredientsbtn.on('click', function () {
-        let apiKey = "0fb886bc44754ed8a35e10c5ab1da96f"
+        let apiKey = "a4ae7310bb584baaafb75d7ff837949e"
         let ingredients = selectedIngredients
-        let resultsQuantity = 3;
+        let resultsQuantity = 6;
         let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?" +
             "apiKey=" +
             apiKey +
@@ -66,8 +66,27 @@ function generateBtn() {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            console.log(response)
+            // creates recipe cards for each response item
+
+            let recipeContainer = $('<div class=row>');
+            $('.container').append(recipeContainer);
+
 
             for (let i = 0; i < resultsQuantity; i++) {
+                
+                let recipeDiv = $('<div>');
+                recipeDiv.addClass('col s12 m4');
+
+                let recipeCard = $('<div class=card>');
+                let recipeImage = $('<div class=card-image>')
+                let foodImage = $('<img>');
+                
+                foodImage.attr('src', response[i].image);
+                
+
+                let foodTitle = $('<span class=card-title>');
+                let recipeLink = $('<a class=source-link>');
 
                 let recipeId = response[i].id;
                 let includeNutrition = false;
@@ -84,41 +103,24 @@ function generateBtn() {
                     url: queryURL2,
                     method: "GET"
                 }).then(function (response2) {
-
-
-                    // creates recipe cards for each response item
-                    let recipeContainer = $('<div class=row>');
-                    $('.container').append(recipeContainer);
-
-                    let recipeDiv = $('<div>');
-                    recipeDiv.addClass('col s12 m4');
-
-                    let recipeCard = $('<div class=card>');
-                    let recipeImage = $('<div class=card-image>')
-                    let foodImage = $('<img>');
-                    let recipeLink = $('<a class=source-link>');
-
-                    foodImage.attr('src', response[i].image);
+                    console.log(response2)
                     recipeLink.attr('href', response2.sourceUrl)
-
-                    let foodTitle = $('<span class=card-title>');
-                    $(".card-title").wrap('<a href="' + response2.sourceUrl + '"></a>');
-
-
+                        
+                });
                     foodTitle.text(response[i].title)
                     recipeContainer.append(recipeDiv);
                     recipeDiv.append(recipeCard);
-                    recipeCard.append(recipeImage, recipeLink);
-                    recipeImage.append(foodImage, foodTitle);
+                    recipeCard.append(recipeImage);
+                    recipeImage.append(foodImage, recipeLink);
+                    recipeLink.append(foodTitle)
 
-                }
-                )
-            }
-
-        });
-    })
+                };
+            
+                
+            });
+    
+    });
 }
-
 
 // when the user clicks the start button, these functions will run
 $('#start-here').on('click', function () {
@@ -129,7 +131,4 @@ $('#start-here').on('click', function () {
     generateBtn();
 
 })
-
-
-
 
