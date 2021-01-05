@@ -52,7 +52,7 @@ function generateBtn() {
 
     ingredientsbtn.on('click', function(){
 
-        let apiKey = "3a421742efa14347a15401460d8ad3c4"
+        let apiKey = "a4ae7310bb584baaafb75d7ff837949e"
             let ingredients = selectedIngredients 
             let resultsQuantity = 6;
             let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?" +
@@ -107,9 +107,6 @@ function generateBtn() {
                         method: "GET"
                     }).then(function (response2) {
                         recipeLink.attr('href', response2.sourceUrl)
-
-                        //$(".card-title").wrap('<a href="' + response2.sourceUrl + '"></a>');
-
                     })
 
                    let addTag = $('<a>');
@@ -142,55 +139,6 @@ function generateBtn() {
     })
 }
 
-function loadSavedRecipes() {
-    var savedArray = JSON.parse(localStorage.getItem("savedRecipes"));
-
-    for (let i = 0; i < savedArray.length; i++) {
-  
-        // creates recipe cards for each response item
-        let recipeContainer = $('<div id="recipes" class=row>');
-        $('.container').append(recipeContainer);
-
-        $('html, body').animate({
-            scrollTop: $("#recipes").offset().top
-        });
-
-        for (let i = 0; i < resultsQuantity; i++) {
-            let recipeDiv = $('<div>');
-            recipeDiv.addClass('col s12 m4');
-
-            let recipeCard = $('<div class=card>');
-
-            let recipeImage = $('<div class=card-image>')
-            let foodImage = $('<img>');
-            foodImage.attr('src', savedArray[i].image);
-            let foodTitle = $('<span class=card-title>');
-            foodTitle.text(savedArray[i].title);
-
-            let addTag = $('<a>');
-            addTag.addClass('btn-floating halfway-fab waves-effect waves-light red');
-
-
-            let addIcon = $('<i>');
-            addIcon.addClass('material-icons');
-            addIcon.text('add');
-            addIcon.attr("data-id", i)
-            addIcon.on("click", function () {
-                var itemIndex = $(this).attr("data-id");
-                var itemObject = response[itemIndex];
-                savedRecipes.push(itemObject);
-                localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
-            });
-
-            recipeContainer.append(recipeDiv);
-            recipeDiv.append(recipeCard);
-            recipeCard.append(recipeImage);
-            recipeImage.append(foodImage, foodTitle, addTag);
-            addTag.append(addIcon)
-
-        };
-    }
-}
 
 // when the user clicks the start button, these functions will run
 $('#start-here').on('click', function (){

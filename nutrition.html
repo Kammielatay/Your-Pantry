@@ -4,20 +4,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Nutrition</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>CPU Lookup</title>
 </head>
 <body>
     <nav class="#f5f5f5 grey lighten-4" role="navigation">
         <div class="nav-wrapper">
-            <a id="logo-container" href="#" class="brand-logo black-text">Nutritional Information</a>
+            <a id="logo-container" href="nutrition.html" class="brand-logo black-text">Nutritional Info</a>
             <ul class="right hide-on-med-and-down">
-                <li><a class="black-text" href="#">Home</a></li>
-                <li><a class="black-text" href="index.html"></a></li>
+                <li><a class="black-text" href="index.html">Dashboard</a></li>
+                <li><a class="black-text" href="nutrition.html">CPU LookUp</a></li>
+                <li><a class="black-text" href="myfavorites.html">Saved Recipes</a></li>
             </ul>
              <ul id="nav-mobile" class="sidenav">
                 <li><a href="#"><i class="material-icons">menu</i></a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"></a>
         </div>
-    </nav>    
+    </nav>
+
+    <header>
+        <h3 class="center-align">Find Barcode Information</h3>
+        <p class="center-align">Simply enter the barcode you want to look up and recieve nutritional information within seconds. </p>
+    </header>
+    <main class="container container-2">
+        <div class="row">
+            <div class="col s3"> 
+                <div class="sidebar #b0bec5 blue-grey lighten-3 ">
+                    <h4 class='center-align'>Barcode Lookup:</h4>
+                    <div class="input-field inline">
+                        <input id="input_inline" type="text" class="#ffffff white ">
+                        <button id="lookup-btn"class="btn">Lookup!</button>
+                    </div>
+                    
+                </div>
+            </div>
+        
+            <div class="col s9">
+                <h4 class="center-align nutrition-facts"></h4>
+                <table class="striped centered">
+                    <thead></thead>
+                    <tbody>
+                        <tr>
+                            <td class="item-name"></td>
+                            <td class="item-label"></td>
+                        </tr>
+                        <tr>
+                            <td class="brand-name"></td>
+                            <td class="brand-label"></td>
+                        </tr>
+                        <tr>
+                            <td class="servings"></td>
+                            <td class="serving-size"></td>
+                        </tr>
+                        <tr>
+                            <td class="carbs"></td>
+                            <td class="total-carbs"></td>
+                        </tr>
+                        <tr>
+                            <td class="fat"></td>
+                            <td class="total-fat"></td>
+                        </tr>
+                        <tr>
+                            <td class="protein"></td>
+                            <td class="total-carbs"></td>
+                        </tr>
+                        <tr>
+                            <td class="fiber"></td>
+                            <td class="total-fiber"></td>
+                        </tr>
+                        <tr>
+                            <td class="energy"></td>
+                            <td class="total-energy"></td>
+                        </tr>
+                        <tr>
+                            <td class="ingredients"></td>
+                            <td class="total-ingredients"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+        </div>
+        
+    </main>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/script3.js"></script>
+</body>
+</html>

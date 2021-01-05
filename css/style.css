@@ -35,7 +35,11 @@ body {
     width: 100%;
 }
 
- 
+.container-2 {
+    margin-top: 10px;
+    height: 100%;
+}
+
 .row .col.s2 {
     margin-top: 20px;
     padding-top: 12px;
@@ -61,6 +65,10 @@ span {
     width: 124.453px;
     display: flex;
     margin: auto;
+}
+
+.sidebar {
+    height: 30vh;
 }
 
 
