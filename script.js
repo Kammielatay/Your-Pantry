@@ -42,7 +42,6 @@ function selectedItems() {
     })
 }
 
-
 // creates a button that will will later be clicked to grab recipes
 function generateBtn() {
 
@@ -51,14 +50,15 @@ function generateBtn() {
     $('.container').append(ingredientsbtn);
 
     ingredientsbtn.on('click', function(){
-            let apiKey = "0fb886bc44754ed8a35e10c5ab1da96f"
+        let apiKey = "3a421742efa14347a15401460d8ad3c4"
             let ingredients = selectedIngredients 
-            let resultsQuantity = 21;
+            let resultsQuantity = 6;
             let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?" +
             "apiKey=" +
             apiKey +
             "&ingredients=" +
-            ingredients +
+            ingredients 
+            +
             "&number=" +
             resultsQuantity;
         
@@ -78,18 +78,25 @@ function generateBtn() {
 
                    let recipeCard = $('<div class=card>');
 
-
                    let recipeImage = $('<div class=card-image>')
                    let foodImage = $('<img>');
                    foodImage.attr('src', response[i].image);
                    let foodTitle = $('<span class=card-title>');
-                   foodTitle.text(response[i].title)
+                   foodTitle.text(response[i].title);
+
+                   let addTag = $('<a>');
+                   addTag.addClass('btn-floating halfway-fab waves-effect waves-light red');
+
+                   let addIcon = $('<i>');
+                   addIcon.addClass('material-icons');
+                   addIcon.text('add');
 
 
                    recipeContainer.append(recipeDiv);
                    recipeDiv.append(recipeCard);
                    recipeCard.append(recipeImage);
-                   recipeImage.append(foodImage, foodTitle);
+                   recipeImage.append(foodImage, foodTitle, addTag);
+                   addTag.append(addIcon)
                    
                 }
 
