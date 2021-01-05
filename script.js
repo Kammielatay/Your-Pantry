@@ -50,51 +50,77 @@ function generateBtn() {
     ingredientsbtn.addClass('generate-recipe waves-effect waves-light btn center-align')
     $('.container').append(ingredientsbtn);
 
-    ingredientsbtn.on('click', function(){
-            let apiKey = "0fb886bc44754ed8a35e10c5ab1da96f"
-            let ingredients = selectedIngredients 
-            let resultsQuantity = 21;
-            let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?" +
+    ingredientsbtn.on('click', function () {
+        let apiKey = "a4ae7310bb584baaafb75d7ff837949e"
+        let ingredients = selectedIngredients
+        let resultsQuantity = 6;
+        let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?" +
             "apiKey=" +
             apiKey +
             "&ingredients=" +
             ingredients +
             "&number=" +
             resultsQuantity;
-        
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response)
+
+        // Call to API to retrieve recipe data for cards
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response)
+            // creates recipe cards for each response item
+
+            let recipeContainer = $('<div class=row>');
+            $('.container').append(recipeContainer);
+
+
+            for (let i = 0; i < resultsQuantity; i++) {
                 
-                // creates recipe cards for each response item
-                let recipeContainer = $('<div class=row>');
-                $('.container').append(recipeContainer);
+                let recipeDiv = $('<div>');
+                recipeDiv.addClass('col s12 m4');
+
+                let recipeCard = $('<div class=card>');
+                let recipeImage = $('<div class=card-image>')
+                let foodImage = $('<img>');
                 
-                for (let i = 0; i < resultsQuantity; i++){
-                   let recipeDiv = $('<div>');
-                   recipeDiv.addClass('col s12 m4');
+                foodImage.attr('src', response[i].image);
+                
 
-                   let recipeCard = $('<div class=card>');
+                let foodTitle = $('<span class=card-title>');
+                let recipeLink = $('<a class=source-link>');
 
+                let recipeId = response[i].id;
+                let includeNutrition = false;
+                let queryURL2 = "https://api.spoonacular.com/recipes/" +
+                    recipeId +
+                    "/information" +
+                    "?apiKey=" +
+                    apiKey +
+                    "&includeNutrition=" +
+                    includeNutrition;
 
-                   let recipeImage = $('<div class=card-image>')
-                   let foodImage = $('<img>');
-                   foodImage.attr('src', response[i].image);
-                   let foodTitle = $('<span class=card-title>');
-                   foodTitle.text(response[i].title)
+                // Call to API to retrieve recipe data to add source link to card
+                $.ajax({
+                    url: queryURL2,
+                    method: "GET"
+                }).then(function (response2) {
+                    console.log(response2)
+                    recipeLink.attr('href', response2.sourceUrl)
+                        
+                });
+                    foodTitle.text(response[i].title)
+                    recipeContainer.append(recipeDiv);
+                    recipeDiv.append(recipeCard);
+                    recipeCard.append(recipeImage);
+                    recipeImage.append(foodImage, recipeLink);
+                    recipeLink.append(foodTitle)
 
-
-                   recipeContainer.append(recipeDiv);
-                   recipeDiv.append(recipeCard);
-                   recipeCard.append(recipeImage);
-                   recipeImage.append(foodImage, foodTitle);
-                   
-                }
-
+                };
+            
+                
             });
-    })
+    
+    });
 }
 
 // when the user clicks the start button, these functions will run
@@ -106,6 +132,4 @@ $('#start-here').on('click', function (){
     generateBtn();
    
 })
-
-
 
