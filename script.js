@@ -107,9 +107,6 @@ function generateBtn() {
                         method: "GET"
                     }).then(function (response2) {
                         recipeLink.attr('href', response2.sourceUrl)
-
-                        //$(".card-title").wrap('<a href="' + response2.sourceUrl + '"></a>');
-
                     })
 
                    let addTag = $('<a>');
