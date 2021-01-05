@@ -1,3 +1,4 @@
+
 function loadSavedRecipes() {
     var savedArray = JSON.parse(localStorage.getItem("savedRecipes"));
 
@@ -17,9 +18,10 @@ function loadSavedRecipes() {
             foodImage.attr('src', savedArray[i].image);
             let foodTitle = $('<span class=card-title>');
             foodTitle.text(savedArray[i].title);
+            foodTitle.css("backgroundC-color", "black")
 
             let recipeLink = $('<a class=source-link>');
-            let apiKey = "3a421742efa14347a15401460d8git ad3c4"
+            let apiKey = "a4ae7310bb584baaafb75d7ff837949e"
             let recipeId = savedArray[i].id;
             let includeNutrition = false;
             let queryURL2 = "https://api.spoonacular.com/recipes/" +
@@ -36,7 +38,6 @@ function loadSavedRecipes() {
                 method: "GET"
             }).then(function (response2) {
                 recipeLink.attr('href', response2.sourceUrl)
-
 
             })
 
