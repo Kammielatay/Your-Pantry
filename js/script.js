@@ -57,7 +57,7 @@ function generateBtn() {
 
         let apiKey = "a4ae7310bb584baaafb75d7ff837949e"
         let ingredients = selectedIngredients
-        let resultsQuantity = 6;
+        let resultsQuantity = 21;
         let queryURL = "https://api.spoonacular.com/recipes/findByIngredients?" +
             "apiKey=" +
             apiKey +
