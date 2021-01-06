@@ -12,18 +12,21 @@
 <body>
     <nav class="#f5f5f5 grey lighten-4" role="navigation">
         <div class="nav-wrapper">
-            <a id="logo-container" href="nutrition.html" class="brand-logo black-text">Nutritional Info</a>
+            <a id="logo-container" href="index.html" class="brand-logo black-text">What's in Your Kitchen?</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="black-text" href="index.html">Dashboard</a></li>
                 <li><a class="black-text" href="nutrition.html">CPU LookUp</a></li>
                 <li><a class="black-text" href="myfavorites.html">Saved Recipes</a></li>
             </ul>
-            <ul id="nav-mobile" class="sidenav">
-                <li><a href="#"><i class="material-icons">menu</i></a></li>
-            </ul>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger"></a>
         </div>
     </nav>
+    
+    <ul class="sidenav" id="mobile-demo">
+        <li><a class="black-text" href="index.html">Dashboard</a></li>
+        <li><a class="black-text" href="nutrition.html">CPU LookUp</a></li>
+        <li><a class="black-text" href="myfavorites.html">Saved Recipes</a></li>
+    </ul>
 
     <header>
         <h3 class="center-align">Find Barcode Information</h3>
@@ -32,8 +35,8 @@
     </header>
     <main class="container container-2">
         <div class="row">
-            <div class="col s3">
-                <div class="sidebar #b0bec5 blue-grey lighten-3 ">
+            <div id="search-bar" class="col s12 m3">
+                <div id="search" class="sidebar #b0bec5 blue-grey lighten-3 ">
                     <h4 class="center-align">Barcode Lookup:</h4>
                     <div class="input-field inline">
                         <input id="input_inline" type="text" class="#ffffff white ">
@@ -43,9 +46,9 @@
                 </div>
             </div>
 
-            <div class="col s9 img-div">
+            <div class="col s12 m9 img-div">
                 <h4 class="center-align nutrition-facts"></h4>
-                <table class="striped centered">
+                <table id="display-table" class="striped centered">
                     <thead></thead>
                     <tbody>
                         <tr>
@@ -92,9 +95,13 @@
 
     </main>
 
+    <footer class='center-align'>
+        <p>&copy Kammie, Jammie, Brandon</p>
+    </footer>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/script3.js"></script>
 </body>
 

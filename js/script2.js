@@ -1,3 +1,5 @@
+M.AutoInit();
+$('.sidenav').sidenav();
 
 function loadSavedRecipes() {
     var savedArray = JSON.parse(localStorage.getItem("savedRecipes"));
@@ -9,7 +11,7 @@ function loadSavedRecipes() {
 
         for (let i = 0; i < savedArray.length; i++) {
             let recipeDiv = $('<div>');
-            recipeDiv.addClass('col s12 m4');
+            recipeDiv.addClass('col s12 m3');
 
             let recipeCard = $('<div class=card>');
 
