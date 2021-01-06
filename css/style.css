@@ -67,8 +67,12 @@ span {
     margin: auto;
 }
 
-.sidebar {
-    height: 30vh;
+#search{
+    height: 200px;
+}
+
+input#input_inline {
+    width: 90%;
 }
 
 
@@ -88,6 +92,13 @@ span {
   .container {
     width: 60%;
     }
+
+
+
+.container-2 {
+    width: 100%;
+}
+
 
 
 }
